@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	$(document).on('submit', '#login-form', function(event) {
 		event.preventDefault();
 		// $(this).serializeArray();
@@ -24,18 +24,6 @@ $(document).ready(function() {
 	   var delay = idx * 1000; 
 	    $(ele).liveTile("play", delay);
 	});
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
@@ -63,3 +51,9 @@ $(document).ready(function() {
 		GetClock();
 		setInterval(GetClock,1000);
 	}
+/*	
+	$(document).ready(
+		function() { 
+			$("html").niceScroll();
+		}
+	);*/

@@ -9,9 +9,21 @@
 		
 		<!-- Scripts -->
 		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/jquery.session.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/jquery.nicescroll.min.js"></script>
+		
 		<script src="MetroJs/MetroJs.min.js"></script>
+
+		<!-- <script src="js/highcharts.js"></script>
+		<script src="js/highcharts-more.js"></script>
+		<script src="js/exporting.js"></script> -->
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/Chart.js"></script>
+
+		
 		<script src="js/custom.js"></script>
+		<script src="js/charts.js"></script>
 		
 		<!-- Cascading Style Sheets -->
 		<link href="MetroJs/MetroJs.min.css" rel="stylesheet" media="screen">
@@ -40,7 +52,11 @@
 				</ul>
 			</div>
 		</nav>
-		
+		<div class="col-xs-12 dash-date-time">
+			<p style="text-align: right; color: rgb(124, 124, 124);">
+				<small id="date_time"></small>
+			</p>
+		</div>
 		<section id="login-page" style="display: none;">
 			<form class="form-horizontal login-form" id="login-form" role="form">
 				<div class="form-group">
@@ -72,12 +88,12 @@
 
 		<section id="dash-board">
 			<div class="tiles blue tile-group four-wide">
-			    <div class="live-tile" data-speed="750" data-delay="3000">
+			    <div class="live-tile green" data-speed="750" data-delay="3000">
 			        <span class="tile-title">Daily SUI</span>
 			        <div class="col-xs-6 dash-tile d-sui-tile">
 						<h1>15<small>%</small></h1>
 			        </div>
-			        <div class="col-xs-6 dash-tile d-sui-tile">
+			        <div class="col-xs-6 dash-tile d-sui-tile" style="background-color: #1ba1e2;">
 						<h1>15<small>%</small></h1>
 			        </div>
 			    </div>
@@ -92,9 +108,9 @@
 					</div>
 			    </div>
 			</div>
-			<div class="tiles red">
+			<div class="tiles red tile-group four-wide">
 			    <div class="live-tile blue" id="tile3" data-mode="slide" data-stops="50%" data-stack="true">  
-			        <div>
+			        <div style="/*background-color: #2d89ef;*/">
 			            <p>This tile uses a single stop of 50% with stack = true</p>   
 			            <span class="tile-title">Remaining Tasks</span>
 			        </div>
@@ -102,11 +118,65 @@
 			            <p style="padding-top:55%;">Using data-mode stack adds a nice effect</p>            
 			        </div>
 			    </div>
+				<div class="list-tile mango">
+			        <!-- <span class="tile-title project-title">my projects</span> -->
+			        <ul class="flip-list fourTiles" data-mode="flip-list" data-delay="2000">
+			            <li>
+			                <div class="text-center mango-tile-1">
+			                	<h4 class="project">eSurvey</h4>
+			                	<!-- <h5 class="client">OSM</h5> -->
+			                </div>
+			                <div class="text-center mango-tile-2">
+			                	<h5 class="client">Developer</h5>
+			                	<h6 class="client">Since: 2015/05/01</h6>
+			                </div>
+			            </li>
+			            <li>
+			                <div class="text-center mango-tile-1">
+			                	<h4 class="project">TPro</h4>
+			                	<!-- <h5 class="client">OSM</h5> -->
+			                </div>
+			                <div class="text-center mango-tile-2">
+			                	<h5 class="client">Developer</h5>
+			                	<h6 class="client">Since: 2015/05/01</h6>
+			                </div>
+			            </li>
+			            <li>
+			                <div class="text-center mango-tile-1">
+			                	<h4 class="project">OSBT Website</h4>
+			                	<!-- <h5 class="client">OSBT</h5> -->
+			                </div>
+			                <div class="text-center mango-tile-2">
+			                	<h5 class="client">Developer</h5>
+			                	<h6 class="client">Since: 2015/05/01</h6>
+			                </div>
+			            </li>
+			            <li data-direction="horizontal">
+			                <div class="text-center mango-tile-1">
+			                	<h4 class="project">MyHotel</h4>
+			                	<!-- <h5 class="client">OSM</h5> -->
+			                </div>
+			                <div class="text-center mango-tile-2">
+			                	<h5 class="client">Developer</h5>
+			                	<h6 class="client">Since: 2015/05/01</h6>
+			                </div>
+			            </li>
+			        </ul>
+			    </div>			
+			</div>
+			<div class="tiles red  tile-group four-wide">
+			    <div class="live-tile" data-mode="flip" data-initdelay="500" style="width: 310px !important;">        
+			        <!-- adding the 'full' class to an 'img' or 'a' tag causes it to fill the entire tile -->
+			        <div>
+			        	<canvas id="chart1" width="500" height="400"></canvas>
+			        </div>
+			        <div>
+			            <p>this tile flips vertically. Using the 'data-initdelay' attribute will adjust the time it takes for the inital flip to occur</p>
+			        </div>
+			    </div>
 			</div>
 
-
 		</section>
-
-		
+ 
 	</body>
 </html>
