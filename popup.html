@@ -15,29 +15,24 @@
 		
 		<script src="MetroJs/MetroJs.min.js"></script>
 
-		<!-- <script src="js/highcharts.js"></script>
-		<script src="js/highcharts-more.js"></script>
-		<script src="js/exporting.js"></script> -->
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/Chart.js"></script>
 
 		
 		<script src="js/custom.js"></script>
-		<script src="js/charts.js"></script>
+		<script src="js/ajax.js"></script>
 		
 		<!-- Cascading Style Sheets -->
 		<link href="MetroJs/MetroJs.min.css" rel="stylesheet" media="screen">
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="css/custom.css" rel="stylesheet" media="screen">		
 	</head>
-	
 	<body>
 	
  		<nav class="navbar navbar-default" role="navigation">
 			<div class="navbar-header ">
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#">Brand <!-- <img src="img/tpro.png" style="width: 100px;" /> --></a>
 			</div>
-			<div class="collapse navbar-collapse navbar-ex1-collapse pull-right">
+			<div class="collapse navbar-collapse navbar-ex1-collapse pull-right menu-button">
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -46,27 +41,40 @@
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<li role="presentation" class="divider"></li>
+							<li><a href="#" id="logout">Logout</a></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
 		</nav>
 		<div class="col-xs-12 dash-date-time">
-			<p style="text-align: right; color: rgb(124, 124, 124);">
+			<p style="text-align: right; color: rgb(124, 124, 124); padding-right: 10px;">
 				<small id="date_time"></small>
 			</p>
+			<p id="userdata" style="text-align: right; color: rgb(124, 124, 124); padding-right: 10px;"><small></small></p>
 		</div>
-		<section id="login-page" style="display: none;">
+		<section id="login-page" style="/*display: none;*/">
+			<div class="welcome-text">
+				<img src="img/logo22.png" style="width: 100px;" />
+				<!-- <h2>Hello!</h2> -->
+				<!-- <h3>Welcome to mini access.</h3> -->
+			</div>
 			<form class="form-horizontal login-form" id="login-form" role="form">
+
 				<div class="form-group">
 					<div class="">
-						<input type="text" class="form-control" id="inputEmail3" placeholder="User name">
+						<div id="login-msgs" class="alert alert-danger"><strong>Oh snap!</strong> You have to enter login data.</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="">
-						<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+						<input name="username" type="text" class="form-control" id="username" placeholder="User name">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="">
+						<input name="password" type="password" class="form-control" id="password" placeholder="Password">
 					</div>
 				</div>
 				<div class="form-group">
@@ -86,40 +94,41 @@
 			</form>
 		</section> 
 
-		<section id="dash-board">
+		<section id="dash-board"  style="display: none;">
 			<div class="tiles blue tile-group four-wide">
 			    <div class="live-tile green" data-speed="750" data-delay="3000">
-			        <span class="tile-title">Daily SUI</span>
-			        <div class="col-xs-6 dash-tile d-sui-tile">
-						<h1>15<small>%</small></h1>
+			        <span class="tile-title text-uppercase">Daily SUI</span>
+			        <div class="col-xs-6 dash-tile text-uppercase d-sui-tile">
+						<h1><span>15</span><small>%</small></h1>
 			        </div>
-			        <div class="col-xs-6 dash-tile d-sui-tile" style="background-color: #1ba1e2;">
-						<h1>15<small>%</small></h1>
+			        <div class="col-xs-6 dash-tile text-uppercase d-sui-tile" style="background-color: #1ba1e2;">
+						<h1><span>15</span><small>%</small></h1>
 			        </div>
 			    </div>
 			    <div class="live-tile" data-mode="carousel" data-direction="horizontal" data-delay="2500">
-			        <div class="col-xs-6 dash-tile c-sui-tile">
-						<h1>88<small>%</small></h1>
-				        <span class="tile-title">Cumulative SUI</span>
+			        <div class="col-xs-6 dash-tile text-uppercase c-sui-tile">
+						<h1><span></span><small>%</small></h1>
+				        <span class="tile-title text-uppercase">Cumulative SUI</span>
 					</div>
-			        <div class="col-xs-6 dash-tile c-sui-tile c-sui-tile-wight">
-						<h1>88<small>%</small></h1>
-				        <span class="tile-title">Cumulative SUI</span>
+			        <div class="col-xs-6 dash-tile text-uppercase c-sui-tile c-sui-tile-wight">
+						<h1><span></span><small>%</small></h1>
+				        <span class="tile-title text-uppercase">Cumulative SUI</span>
 					</div>
 			    </div>
 			</div>
 			<div class="tiles red tile-group four-wide">
 			    <div class="live-tile blue" id="tile3" data-mode="slide" data-stops="50%" data-stack="true">  
-			        <div style="/*background-color: #2d89ef;*/">
-			            <p>This tile uses a single stop of 50% with stack = true</p>   
-			            <span class="tile-title">Remaining Tasks</span>
+			        <div class="priority-1" style="background-color: #7e3878;">
+			            <p class="task"></p>   
+			            <p class="text-center text-uppercase note" style="font-size: 10px; background-color:#CD2828;"> You have to give top priority to thesis tasks </p>   
+			            <span class="tile-title text-uppercase">Remaining Tasks</span>
 			        </div>
-			        <div style="background-color:navy;">
-			            <p style="padding-top:55%;">Using data-mode stack adds a nice effect</p>            
+			        <div class="priority-2" style="background-color:#603cba;">
+			            <p class="task" style="padding-top:55%;"></p>            
 			        </div>
 			    </div>
 				<div class="list-tile mango">
-			        <!-- <span class="tile-title project-title">my projects</span> -->
+			        <!-- <span class="tile-title text-uppercase project-title">my projects</span> -->
 			        <ul class="flip-list fourTiles" data-mode="flip-list" data-delay="2000">
 			            <li>
 			                <div class="text-center mango-tile-1">
@@ -165,18 +174,24 @@
 			    </div>			
 			</div>
 			<div class="tiles red  tile-group four-wide">
-			    <div class="live-tile" data-mode="flip" data-initdelay="500" style="width: 310px !important;">        
+			    <div class="live-tile" data-mode="flip" data-initdelay="500" style="width: 310px !important;">
 			        <!-- adding the 'full' class to an 'img' or 'a' tag causes it to fill the entire tile -->
-			        <div>
-			        	<canvas id="chart1" width="500" height="400"></canvas>
+			        <div class="working-project text-uppercase">
+			        	<!-- Showing division and lead to working projects -->
+			        	<h1>Your working Projects</h1>
+			        	<h5><span></span></h5>
 			        </div>
-			        <div>
-			            <p>this tile flips vertically. Using the 'data-initdelay' attribute will adjust the time it takes for the inital flip to occur</p>
+			        <div class="working-project-list">
+			            <ul></ul>
 			        </div>
 			    </div>
 			</div>
-
 		</section>
- 
+ 		
+ 		<footer id="footer">
+ 			<small class="footer-text">
+ 				mini access. &copy; & powered by Pradeep Rajapakshe.
+ 			</small>
+ 		</footer>
 	</body>
 </html>
