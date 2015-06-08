@@ -7,14 +7,19 @@
 		"storage"
 	],
 	"icons": { 
-		"16": "img/icon16.png",
-		"48": "img/icon48.png",
-		"128": "img/icon128.png" 
+		// "16": "img/icon16.png",
+		// "48": "img/icon48.png",
+		// "128": "img/icon128.png" 
+		"16": "img/tpro348.png",
+		"48": "img/tpro348.png",
+		"128": "img/tpro348.png" 
 	},
 	"browser_action": {
 		"default_icon": {                    
-			"19": "img/icon48.png",          
-			"38": "img/icon48.png"          
+			// "19": "img/icon48.png",          
+			// "38": "img/icon48.png"          
+			"19": "img/tpro348.png",          
+			"38": "img/tpro348.png"          
 		},
 		"default_popup": "popup.html"
 	},

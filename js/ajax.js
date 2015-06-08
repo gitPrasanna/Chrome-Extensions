@@ -56,6 +56,7 @@ function function_login (username, password) {
 	    },
 	    error:function(jqXHR,textStatus,errorThrown){
 	    	console.log(jqXHR);
+	    	$('#login-msgs').removeClass('alert-success').removeClass('alert-warning').addClass('alert-danger').html('<strong>Opps!</strong> Something wrong.');
 	    }
 	});
 
