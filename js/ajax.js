@@ -50,8 +50,8 @@ function function_login (username, password) {
 				$('#dash-board').css('display', 'block');
 				$('#login-page').css('display', 'none');
 
-			}else{
-
+			}else if(response.error=='error'){
+				$('#login-msgs').removeClass('alert-success').removeClass('alert-warning').addClass('alert-danger').html('<strong>Opps!</strong> Something wrong.');
 			};
 	    },
 	    error:function(jqXHR,textStatus,errorThrown){
@@ -72,6 +72,7 @@ function get_user_data (username) {
 		dataType: 'json',
 		data: {username: username},
 		success:function(response){
+			
 			if (response.query_status=='success') { // check user login process is success and if yes, set all user data into view.
 
 				$.cookie('user_id', 		$.trim(response.user.member_id), 	{ expires: 1 });
@@ -103,9 +104,8 @@ function get_user_data (username) {
 
 				$('#dash-board').css('display', 'block');
 				$('#login-page').css('display', 'none');
-
-			}else{
-
+			}else if(response.error=='error'){
+				$('#login-msgs').removeClass('alert-success').removeClass('alert-warning').addClass('alert-danger').html('<strong>Opps!</strong> Something wrong.');
 			};
 	    },
 	    error:function(jqXHR,textStatus,errorThrown){

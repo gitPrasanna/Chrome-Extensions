@@ -18,10 +18,9 @@ $(document).ready(function() {
 			$('#login-msgs').removeClass('alert-success').addClass('alert-danger').html('<strong>Oh snap!</strong> You have to enter login data.')
 		}
 		else{ // if yes send processing msg and call to login function
-			$('#login-msgs').removeClass('alert-success').removeClass('alert-danger').addClass('alert-warning').html('<strong>Please wait!</strong> Um processing.')
+			$('#login-msgs').removeClass('alert-success').removeClass('alert-danger').addClass('alert-warning').html('<strong>Please wait!</strong> Um processing.');
 			function_login($('#username').val(), $('#password').val());
 		}
-
 	});
 
 	$(".live-tile, .flip-list").not(".exclude").liveTile();
