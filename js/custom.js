@@ -1,8 +1,9 @@
+var base_url 	= 'http://localhost/tpro/index.php';
+var base_api_url= 'http://localhost/tpro/index.php/api/miniaccessapi';
 $(document).ready(function() {
 
 	if(typeof($.cookie('user_name')) != "undefined" && $.cookie('user_name') !== null) {
     	
-		// alert($.cookie('user_id'));
 		get_user_data ($.cookie('user_name'))
 
 	}else{
@@ -24,6 +25,7 @@ $(document).ready(function() {
 	});
 
 	$(".live-tile, .flip-list").not(".exclude").liveTile();
+	$("#flip-tile").liveTile({ startNow:false, flipListOnHover:true, flipListOnHoverEvent:'mouseover' });
 	
 	//play on hover with initial play
 	var $tiles = $("#tile1, #tile3").liveTile({ 
@@ -57,6 +59,21 @@ $(document).ready(function() {
 		$('#dash-board').css('display', 'none');
 	});
 
+	$(document).on('click', '#task-flip-hotspot-1', function(event) {
+		event.preventDefault();
+		if ($.cookie('user_name') && $.cookie('user_id')) {
+			getusertasks($.cookie('user_id'), $.cookie('user_name'));
+			$('#task-page').css('display', 'block');
+			$('#dash-board').css('display', 'none');
+		};
+
+	});
+
+	$(document).on('click', '#task-page>.tiles>.go-back', function(event) {
+		event.preventDefault();
+		$('#dash-board').css('display', 'block');
+		$('#task-page').css('display', 'none');
+	});
 
 });
 

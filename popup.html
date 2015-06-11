@@ -4,30 +4,29 @@
 	    <meta charset="utf-8">
 		<meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
 		<meta name="author" content="Elliot Hesp">
-		
+
 		<title>Chrome Extension with Twitter Bootstrap 3.0</title>
-		
+
 		<!-- Scripts -->
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/jquery.session.js"></script>
 		<script src="js/jquery.cookie.js"></script>
 		<script src="js/jquery.nicescroll.min.js"></script>
-		
+
 		<script src="MetroJs/MetroJs.min.js"></script>
 
 		<script src="js/bootstrap.min.js"></script>
 
-		
 		<script src="js/custom.js"></script>
 		<script src="js/ajax.js"></script>
-		
+
 		<!-- Cascading Style Sheets -->
 		<link href="MetroJs/MetroJs.min.css" rel="stylesheet" media="screen">
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="css/custom.css" rel="stylesheet" media="screen">		
 	</head>
 	<body>
-	
+
  		<nav class="navbar navbar-default" role="navigation">
 			<div class="navbar-header ">
 				<a class="navbar-brand" href="#">Brand <!-- <img src="img/tpro.png" style="width: 100px;" /> --></a>
@@ -127,47 +126,28 @@
 			            <p class="task" style="padding-top:55%;"></p>            
 			        </div>
 			    </div>
-				<div class="list-tile mango">
-			        <!-- <span class="tile-title text-uppercase project-title">my projects</span> -->
+				<div class="list-tile mango task-flip-tile">
 			        <ul class="flip-list fourTiles" data-mode="flip-list" data-delay="2000">
-			            <li>
+			            <li id="task-flip-hotspot-1" style="border-bottom: 2px solid rgb(150, 150, 150);">
 			                <div class="text-center mango-tile-1">
-			                	<h4 class="project">eSurvey</h4>
-			                	<!-- <h5 class="client">OSM</h5> -->
+			                	<h4 class="project text-uppercase" style="padding: 12px 0; font-size: 24px;">my tasks</h4>
 			                </div>
 			                <div class="text-center mango-tile-2">
-			                	<h5 class="client">Developer</h5>
-			                	<h6 class="client">Since: 2015/05/01</h6>
+			                	<h5 class="client">Check your task utilization here.!</h5>
+			                	<!-- <h6 class="client">Since: 2015/05/01</h6> -->
 			                </div>
 			            </li>
 			            <li>
 			                <div class="text-center mango-tile-1">
-			                	<h4 class="project">TPro</h4>
-			                	<!-- <h5 class="client">OSM</h5> -->
+			                	<h4 class="project">
+			                		<!-- <span class="glyphicon glyphicon-bell"> -->
+			                		<img src="./img/bell.png" style="width: 50px;">
+			                		<span class="" style="position: absolute; font-size: 20px; margin: 30px 0px 0 -61px; font-weight: 600; color: red;">42</span>
+			                	</h4>
 			                </div>
 			                <div class="text-center mango-tile-2">
-			                	<h5 class="client">Developer</h5>
-			                	<h6 class="client">Since: 2015/05/01</h6>
-			                </div>
-			            </li>
-			            <li>
-			                <div class="text-center mango-tile-1">
-			                	<h4 class="project">OSBT Website</h4>
-			                	<!-- <h5 class="client">OSBT</h5> -->
-			                </div>
-			                <div class="text-center mango-tile-2">
-			                	<h5 class="client">Developer</h5>
-			                	<h6 class="client">Since: 2015/05/01</h6>
-			                </div>
-			            </li>
-			            <li data-direction="horizontal">
-			                <div class="text-center mango-tile-1">
-			                	<h4 class="project">MyHotel</h4>
-			                	<!-- <h5 class="client">OSM</h5> -->
-			                </div>
-			                <div class="text-center mango-tile-2">
-			                	<h5 class="client">Developer</h5>
-			                	<h6 class="client">Since: 2015/05/01</h6>
+			                	<h5 class="client">You have <strong>42</strong> notification!</h5>
+			                	<!-- <h6 class="client">Since: 2015/05/01</h6> -->
 			                </div>
 			            </li>
 			        </ul>
@@ -175,9 +155,7 @@
 			</div>
 			<div class="tiles red  tile-group four-wide">
 			    <div class="live-tile" data-mode="flip" data-initdelay="500" style="width: 310px !important;">
-			        <!-- adding the 'full' class to an 'img' or 'a' tag causes it to fill the entire tile -->
 			        <div class="working-project text-uppercase">
-			        	<!-- Showing division and lead to working projects -->
 			        	<h1>Your working Projects</h1>
 			        	<h5><span></span></h5>
 			        </div>
@@ -187,7 +165,142 @@
 			    </div>
 			</div>
 		</section>
- 		
+
+		<section id="task-page" style="display: none;">
+			
+			<div class="tiles">
+				<div class="live-tile accent green exclude go-back">
+			        <p><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp; Go Back</p>
+
+			    </div>
+				<div class="live-tile accent green exclude task-page-note">
+			        <p style="font-size: small;">
+			        	You are supposed to finish the <strong class="text-uppercase">in-progress</strong> tasks and start the <strong class="text-uppercase">not-started</strong> tasks
+			        </p>
+			    </div>
+		    </div>
+
+			<div class="tiles">
+			    <div class="live-tile blue all-tasks" data-mode="flip" data-initdelay="500">        
+			        <div class="task-tile text-center text-uppercase">
+			            <h2 style="padding: 28% 10px;"><span>All</span></h2>
+			            <span class="tile-title text-uppercase">all tasks</span>
+			        </div>
+			        <div class="task-tile text-center text-uppercase">
+			            <h1><span class="count">15</span></h1>
+			            <span class="tile-title text-uppercase">all tasks</span>
+			        </div>
+			    </div>
+			    <div class="live-tile red not-started-tasks" data-direction="horizontal" data-mode="flip">     
+			        <div class="task-tile text-center text-uppercase not-started-task-tile">
+			        	<h2><span>Not Satrted</span></h2>
+				        <span class="tile-title text-uppercase">not satrted tasks</span>
+			        </div>
+			        <div class="task-tile text-center text-uppercase">
+			            <h1><span class="count">12</span></h1>
+				        <span class="tile-title text-uppercase">not satrted tasks</span>
+			        </div>
+			    </div>
+			</div>
+
+			<div class="tiles tile-group four-wide">
+			    <div class="live-tile orange in-progress-tasks" data-speed="750" data-delay="3000">
+			        <span class="tile-title text-uppercase">in progress tasks</span>
+			        <div class="task-tile text-center text-uppercase in-pro-task-tile">
+						<h2><span>in progress</span></h2>
+			        </div>
+			        <div class="task-tile text-center text-uppercase" style="background-color: #e3a21a; ">
+						<h1><span class="count">44</span></h1>
+			        </div>
+			    </div>
+			    <div class="live-tile green finished-tasks" data-mode="carousel" data-direction="horizontal" data-delay="2500">
+			        <div class="task-tile text-center text-uppercase finished-task-tile" style="padding: 28% 10px;">
+						<h2><span>finished</span></h2>
+				        <span class="tile-title text-uppercase">fnished tasks</span>
+					</div>
+			        <div class="task-tile text-center text-uppercase task-tile-wight" style="background-color: #393;">
+						<h1><span class="count">12</span></h1>
+				        <span class="tile-title text-uppercase">fnished tasks</span>
+					</div>
+			    </div>
+			</div>
+
+			<div class="tiles">
+				<div class="live-tile accent green exclude task-page-bottom-note">
+			        <p style="font-size: small;">
+			        	Try your best for achieve complete tasks and improve yourself. 
+			        	<!-- make the projects success on you work for came company success and your success. -->
+			        	<!-- You are supposed to finish the <strong class="text-uppercase">in-progress</strong> tasks and start the <strong class="text-uppercase">not-started</strong> tasks -->
+			        </p>
+			    </div>
+		    </div>
+
+			<!-- <div class="tiles blue tile-group four-wide">
+			    <div class="live-tile green" data-speed="750" data-delay="3000">
+			        <span class="tile-title text-uppercase">all tasks</span>
+			        <div class="col-xs-6 dash-tile text-uppercase ">
+						<h1><span>All</span></h1>
+			        </div>
+			        <div class="col-xs-6 dash-tile text-uppercase" style="background-color: #1ba1e2;">
+						<h1><span>15</span></h1>
+			        </div>
+			    </div>
+			    <div class="live-tile" data-mode="carousel" data-direction="horizontal" data-delay="2500">
+			        <div class="col-xs-6 dash-tile text-uppercase">
+						<h2><span>Not Satrted</span></h2>
+				        <span class="tile-title text-uppercase">not satrted tasks</span>
+					</div>
+			        <div class="col-xs-6 dash-tile text-uppercase c-sui-tile-wight">
+						<h1><span>12</span></h1>
+				        <span class="tile-title text-uppercase">not satrted tasks</span>
+					</div>
+			    </div>
+			</div> -->
+
+			<!-- <div class="mango">
+			    <div class="red list-tile task-status-tile" style="width: 98%;">
+			        <ul id="flip-tile" class="flip-list nineTiles" data-initdelay="500" data-mode="flip-list" data-delay="3000">
+			            <li>
+			                <div class="accent status-text-tile"><span>Assigned</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li>
+			                <div class="accent status-text-tile"><span>Planned</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li data-direction="horizontal">
+			                <div class="accent status-text-tile"><span>Requested</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li>
+			                <div class="accent status-text-tile"><span>Accepted</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li>
+			                <div class="accent status-text-tile"><span>Not Started</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li data-direction="horizontal">
+			                <div class="accent status-text-tile"><span>Delayed Incomplete</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li>
+			                <div class="accent status-text-tile"><span>In Progress</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li>
+			                <div class="accent status-text-tile"><span>Delayed Complete</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			            <li data-direction="horizontal">
+			                <div class="accent status-text-tile"><span>Finished</span></div>
+			                <div class="status-value-tile">21</div>
+			            </li>
+			        </ul>
+			    </div>
+			</div> -->
+		</section>
+
  		<footer id="footer">
  			<small class="footer-text">
  				mini access. &copy; & powered by Pradeep Rajapakshe.
