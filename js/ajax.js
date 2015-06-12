@@ -36,6 +36,7 @@ function function_login (username, password) {
 				$('.working-project h5 span').text('The '+ $.cookie('division') +' ['+ $.cookie('division_code') +'] division');	// division name & set division code
 				
 				//for (var i = 0; i < response.projects.length; i++) {			// set project list
+				$('.working-project-list ul').text('');
 				for (var i = 0; i < 5; i++) {			// set project list
 					if (response.projects[i].project_name!='') {
 						$('.working-project-list ul').append('<li>'+ $.trim(response.projects[i].project_name) +'</li>');
@@ -90,6 +91,7 @@ function get_user_data (username) {
 				$('.working-project h5 span').text('The '+ $.cookie('division') +' ['+ $.cookie('division_code') +'] division');	// division name & set division code
 				
 				//for (var i = 0; i < response.projects.length; i++) {			// set project list
+				$('.working-project-list ul').text('');
 				for (var i = 0; i < 5; i++) {			// set project list
 					if (response.projects[i].project_name!='') {
 						$('.working-project-list ul').append('<li>'+ $.trim(response.projects[i].project_name) +'</li>');

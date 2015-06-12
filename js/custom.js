@@ -57,9 +57,10 @@ $(document).ready(function() {
 		$('#login-msgs').removeClass('alert-danger').removeClass('alert-success').removeClass('alert-warning').addClass('alert-success').html('<strong>Yeah!</strong> You have successfully logout.').delay(3000);
 		$('#login-page').css('display', 'block');
 		$('#dash-board').css('display', 'none');
+		$('#task-page').css('display', 'none');
 	});
 
-	$(document).on('click', '#task-flip-hotspot-1', function(event) {
+	$(document).on('click', '#task-flip-hotspot-1, #task-page-link', function(event) {
 		event.preventDefault();
 		if ($.cookie('user_name') && $.cookie('user_id')) {
 			getusertasks($.cookie('user_id'), $.cookie('user_name'));
