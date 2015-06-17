@@ -2,7 +2,7 @@
 function function_login (username, password) {
 
 	$.ajax({
-		url: 'http://localhost/tpro/index.php/api/miniaccessapi/auth',
+		url: base_api_url+'/auth',
 		type: 'POST',
 		cache: false,
 	    async: true,
@@ -36,6 +36,7 @@ function function_login (username, password) {
 				$('.working-project h5 span').text('The '+ $.cookie('division') +' ['+ $.cookie('division_code') +'] division');	// division name & set division code
 				
 				//for (var i = 0; i < response.projects.length; i++) {			// set project list
+				$('.working-project-list ul').text('');
 				for (var i = 0; i < 5; i++) {			// set project list
 					if (response.projects[i].project_name!='') {
 						$('.working-project-list ul').append('<li>'+ $.trim(response.projects[i].project_name) +'</li>');
@@ -56,16 +57,14 @@ function function_login (username, password) {
 	    },
 	    error:function(jqXHR,textStatus,errorThrown){
 	    	console.log(jqXHR);
-	    	$('#login-msgs').removeClass('alert-success').removeClass('alert-warning').addClass('alert-danger').html('<strong>Opps!</strong> Something wrong.');
 	    }
 	});
-
 }
 
 function get_user_data (username) {
 
 	$.ajax({
-		url: 'http://localhost/tpro/index.php/api/miniaccessapi/getuserdata',
+		url: base_api_url+'/getuserdata',
 		type: 'POST',
 		cache: false,
 	    async: true,
@@ -92,6 +91,7 @@ function get_user_data (username) {
 				$('.working-project h5 span').text('The '+ $.cookie('division') +' ['+ $.cookie('division_code') +'] division');	// division name & set division code
 				
 				//for (var i = 0; i < response.projects.length; i++) {			// set project list
+				$('.working-project-list ul').text('');
 				for (var i = 0; i < 5; i++) {			// set project list
 					if (response.projects[i].project_name!='') {
 						$('.working-project-list ul').append('<li>'+ $.trim(response.projects[i].project_name) +'</li>');
@@ -113,5 +113,27 @@ function get_user_data (username) {
 	    	console.log(jqXHR);
 	    }
 	});
+}
 
+function getusertasks (userid, username) {
+
+	$.ajax({
+		url: base_api_url+'/getusertasks',
+		type: 'POST',
+		cache: false,
+	    async: true,
+	    crossdomain: true,
+		dataType: 'json',
+		data: {userid: userid, username: username},
+		success:function(response){
+			// console.log(response.task_data.all_tasks);
+			$('#task-page>.tiles>.all-tasks>.task-tile>h1>.count').text(response.task_data.all_tasks);
+			$('#task-page>.tiles>.not-started-tasks>.task-tile>h1>.count').text(response.task_data.not_started_tasks);
+			$('#task-page>.tiles>.in-progress-tasks>.task-tile>h1>.count').text(response.task_data.inprogress_tasks);
+			$('#task-page>.tiles>.finished-tasks>.task-tile>h1>.count').text(response.task_data.finished_tasks);
+		},
+		error:function(jqXHR,textStatus,errorThrown){
+	    	console.log(jqXHR);
+	    }
+	});
 }

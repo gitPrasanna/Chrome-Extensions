@@ -1,13 +1,13 @@
+var base_url 	= 'http://192.168.50.117/tpro/index.php';
+var base_api_url= 'http://192.168.50.117/tpro/index.php/api/miniaccessapi';
 $(document).ready(function() {
 
 	if(typeof($.cookie('user_name')) != "undefined" && $.cookie('user_name') !== null) {
-    	
-		// alert($.cookie('user_id'));
+
 		get_user_data ($.cookie('user_name'))
 
 	}else{
 		$('#login-msgs').removeClass('alert-danger').addClass('alert-success').html('<strong>Hello!</strong> Welcome to mini access.')
-	
 	}
 
 	$(document).on('submit', '#login-form', function(event) {
@@ -24,6 +24,7 @@ $(document).ready(function() {
 	});
 
 	$(".live-tile, .flip-list").not(".exclude").liveTile();
+	$("#flip-tile").liveTile({ startNow:false, flipListOnHover:true, flipListOnHoverEvent:'mouseover' });
 	
 	//play on hover with initial play
 	var $tiles = $("#tile1, #tile3").liveTile({ 
@@ -55,9 +56,23 @@ $(document).ready(function() {
 		$('#login-msgs').removeClass('alert-danger').removeClass('alert-success').removeClass('alert-warning').addClass('alert-success').html('<strong>Yeah!</strong> You have successfully logout.').delay(3000);
 		$('#login-page').css('display', 'block');
 		$('#dash-board').css('display', 'none');
+		$('#task-page').css('display', 'none');
 	});
 
+	$(document).on('click', '#task-flip-hotspot-1, #task-page-link', function(event) {
+		event.preventDefault();
+		if ($.cookie('user_name') && $.cookie('user_id')) {
+			getusertasks($.cookie('user_id'), $.cookie('user_name'));
+			$('#task-page').css('display', 'block');
+			$('#dash-board').css('display', 'none');
+		};
+	});
 
+	$(document).on('click', '#task-page>.tiles>.go-back', function(event) {
+		event.preventDefault();
+		$('#dash-board').css('display', 'block');
+		$('#task-page').css('display', 'none');
+	});
 });
 
 var tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");

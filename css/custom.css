@@ -186,12 +186,16 @@ h4.client, h5.client, h6.client{
 	margin: 0px;
 	line-height: 15px;
 }
+
+
 .priority-1{
 
 }
 .priority-2{
 
 }
+
+
 .welcome-text{
 	text-align: center;
 }
@@ -201,3 +205,83 @@ h4.client, h5.client, h6.client{
 .welcome-text h3{
 	margin: 10px 0;
 }
+.task-tile-wight{
+	background-color: #fff !important;
+	color: #393 !important;
+}
+.task-tile-wight>span{
+	background-color: #393 !important;
+	color: #fff !important;
+}
+.task-tile-wight h1 small{
+	color: #ee1111;
+}
+.finished-task-tile{
+	padding: 25% 0% !important;
+}
+.in-pro-task-tile{
+	padding: 15% 0% !important;
+}
+.not-started-task-tile{
+	padding: 15% 0% !important;
+}
+.task-tile h1{
+	padding: 15% 0% !important;
+	font-size: 60px !important;
+}
+.task-status-tile ul li{
+	font-size: 13px;
+  	text-align: center;
+}
+.task-status-tile ul li div.status-text-tile{
+	/*padding-top: 12px; */
+	background-color: #7e3878;
+}
+.task-status-tile ul li div.status-value-tile{
+	/*padding: 5px;*/
+	font-size: 24px;
+	background-color: #1e7145;
+}
+.task-flip-tile .flip-list.fourTiles>li{
+	width: 100% !important;
+	cursor: pointer;
+}
+.task-page-note{
+	width: 97%;
+  	height: 50%;
+  	text-align: center;
+  	background-color: #2b5797 !important;
+}
+.task-page-bottom-note{
+	width: 97%;
+  	height: 50%;
+  	text-align: center;
+  	background-color: #00aba9 !important;
+}
+.go-back{
+	width: 50%;
+  	height: 50%;
+  	text-align: center;
+  	float: right;
+  	background-color: #252525 !important;
+
+	display: inline-block;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	white-space: nowrap;
+	line-height: 1.428571429;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;  	
+}
+
+/*font-size: 20px;*/
+  /*font-weight: 500;*/
+  /* background-color: red; */
+  /*color: black;*/

@@ -1,25 +1,20 @@
 {
 	"manifest_version": 2,
-	"name": "mini access",
-	"description": "Access your application with any where.",
-	"version": "1.0",
+	"name": "TPro mini access",
+	"description": "Access TPro easily for get catch .",
+	"version": "1.1",
 	"permissions": [
 		"storage"
 	],
-	"icons": { 
-		// "16": "img/icon16.png",
-		// "48": "img/icon48.png",
-		// "128": "img/icon128.png" 
-		"16": "img/tpro348.png",
-		"48": "img/tpro348.png",
-		"128": "img/tpro348.png" 
+	"icons": {
+		"16": "img/tpro16.png",
+		"48": "img/tpro48.png",
+		"128": "img/tpro128.png"
 	},
 	"browser_action": {
-		"default_icon": {                    
-			// "19": "img/icon48.png",          
-			// "38": "img/icon48.png"          
-			"19": "img/tpro348.png",          
-			"38": "img/tpro348.png"          
+		"default_icon": {
+			"19": "img/tpro128.png",
+			"38": "img/tpro128.png"
 		},
 		"default_popup": "popup.html"
 	},
